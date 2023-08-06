@@ -75,7 +75,27 @@ const LinkedList = () => {
     return value === tail().value ? true : false;
   };
 
-  const find = () => {};
+  const find = (value) => {
+    let current = headNode;
+    let index = 0;
+    while (current.nextNode) {
+      if (current.value != value) index++;
+      else return index;
+      current = current.nextNode;
+    }
+    return value === tail().value ? size() - 1 : null;
+  };
+
+  const toString = () => {
+    let string = "";
+    let current = headNode;
+
+    while (current) {
+      string += ` ( ${current.value} ) -> `;
+      current = current.nextNode;
+    }
+    return string;
+  };
 
   //Prints the data of the linked list. First sets the head as the current print item.
   //After printing the value, sets the nextNode as the current print item.
@@ -88,7 +108,19 @@ const LinkedList = () => {
     }
   };
 
-  return { append, prepend, size, head, tail, at, pop, contains, printData };
+  return {
+    append,
+    prepend,
+    size,
+    head,
+    tail,
+    at,
+    pop,
+    contains,
+    find,
+    toString,
+    printData,
+  };
 };
 
 const Node = (data, next) => {
@@ -112,5 +144,7 @@ ll.append("a");
 // console.log(ll.tail());
 // console.log(ll.at(3));
 // ll.pop();
-ll.printData();
-console.log(ll.contains("b"));
+// ll.printData();
+// console.log(ll.contains("b"));
+// console.log(ll.find(600));
+console.log(ll.toString());
