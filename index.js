@@ -37,6 +37,7 @@ const LinkedList = () => {
     return headNode;
   };
 
+  //Returns the last node in the linked list
   const tail = () => {
     let current = headNode;
 
@@ -46,17 +47,18 @@ const LinkedList = () => {
     return current;
   };
 
+  //Returns the node at the specified index
   const at = (index) => {
     let current = headNode;
     for (let i = 0; i <= index; i++) {
       if (i == index) {
-        console.log("works");
         return current;
       }
       current = current.nextNode;
     }
   };
 
+  //Removes the last node from the linked list
   const pop = () => {
     let current = headNode;
 
@@ -66,6 +68,7 @@ const LinkedList = () => {
     current.nextNode = null;
   };
 
+  //Checks if the value provided is in the linked list
   const contains = (value) => {
     let current = headNode;
     while (current.nextNode) {
@@ -75,6 +78,7 @@ const LinkedList = () => {
     return value === tail().value ? true : false;
   };
 
+  //Finds if a specific value is in the linked list. If it doesn't exist, returns null.
   const find = (value) => {
     let current = headNode;
     let index = 0;
@@ -86,6 +90,7 @@ const LinkedList = () => {
     return value === tail().value ? size() - 1 : null;
   };
 
+  //Lists all the values inside the linked list as a string.
   const toString = () => {
     let string = "";
     let current = headNode;
