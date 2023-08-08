@@ -102,13 +102,31 @@ const LinkedList = () => {
     return string;
   };
 
-  //Prints the data of the linked list. First sets the head as the current print item.
-  //After printing the value, sets the nextNode as the current print item.
-  const printData = () => {
+  //Inserts a new node with the provided value at provided index.
+  //First the position prior to the index is found. Then the newNode is created with the provided value and the nextNode is the current node at the index.
+  //Then the nextNode of the previous index node is set to the newNode that is created. The size of the list is increased by 1.
+  const insertAt = (value, index) => {
     let current = headNode;
+    for (let i = 0; i < index; i++) {
+      if (index - 1 == i) {
+        const newNode = Node(value, current.nextNode);
+        listLength++;
+        return (current.nextNode = newNode);
+      }
+      current = current.nextNode;
+    }
+  };
 
-    while (current) {
-      console.log(current.value);
+  //Removes the node at the given index.
+  //First the position prior to the index is found. Then the node at the previous index has the nextNode change to the node after the index.
+  const removeAt = (index) => {
+    let current = headNode;
+    for (let i = 0; i < index; i++) {
+      if (index - 1 == i) {
+        current.nextNode = current.nextNode.nextNode;
+        listLength--;
+        return null;
+      }
       current = current.nextNode;
     }
   };
@@ -124,6 +142,8 @@ const LinkedList = () => {
     contains,
     find,
     toString,
+    insertAt,
+    removeAt,
     printData,
   };
 };
@@ -152,4 +172,8 @@ ll.append("a");
 // ll.printData();
 // console.log(ll.contains("b"));
 // console.log(ll.find(600));
+// console.log(ll.toString());
+// // ll.insertAt("a", 3);
+// console.log(ll.toString());
+// ll.removeAt(3);
 console.log(ll.toString());
